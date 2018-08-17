@@ -54,9 +54,8 @@ def selection_sort(ints):
         min_i = i
         for j in range(i + 1, len(ints)):
             c += 1
-            if ints[j] < ints[i]:
+            if ints[j] < ints[min_i]:
                 min_i = j
-        #s += 2
         s += 1
         ints[i], ints[min_i] = ints[min_i], ints[i]      
     return (c, s)
@@ -77,9 +76,38 @@ def insertion_sort(ints):
     return (c, s)
 
 
+def merge(ints, l_h, r_h):
+    i = 0
+    j = 0
+    k = 0
+    while i < len(l_h) and j < len(r_h):
+        if l_h[i] < r_h[j]:
+            ints[k] = l_h[i]
+            i += 1
+        else:
+            ints[k] = r_h[j]
+            j += 1
+        k += 1
+    while i < len(l_h):
+        ints[k] = l_h[i]
+        i += 1
+        k += 1
+    while j < len(r_h):
+        ints[k] = r_h[j]
+        j += 1
+        k += 1
+
+
 def merge_sort(ints):
-    pass
-    #return (0, 0)
+    if len(ints) > 1:
+        mid = len(ints) // 2
+        l_h = ints[:mid]
+        r_h = ints[mid:]
+        
+        merge_sort(l_h)
+        merge_sort(r_h)
+
+        merge(ints, l_h, r_h)
 
 
 def partition(ints, start, end):

@@ -80,7 +80,11 @@ def merge(ints, l_h, r_h):
     i = 0
     j = 0
     k = 0
+    c = 0
+    s = 0
     while i < len(l_h) and j < len(r_h):
+        c += 1
+        s += 1 
         if l_h[i] < r_h[j]:
             ints[k] = l_h[i]
             i += 1
@@ -88,26 +92,44 @@ def merge(ints, l_h, r_h):
             ints[k] = r_h[j]
             j += 1
         k += 1
+    c, s = merge_l_r(ints, l_h, r_h, i, j, k, c, s)
+    return (c, s)
+
+
+def merge_l_r(ints, l_h, r_h, i, j, k, c, s):
     while i < len(l_h):
+        c += 1
+        s += 1 
         ints[k] = l_h[i]
         i += 1
         k += 1
     while j < len(r_h):
+        c += 1
+        s += 1 
         ints[k] = r_h[j]
         j += 1
         k += 1
+    return (c, s)
 
 
-def merge_sort(ints):
+def merge_sort_helper(ints):
     if len(ints) > 1:
         mid = len(ints) // 2
         l_h = ints[:mid]
         r_h = ints[mid:]
         
-        merge_sort(l_h)
-        merge_sort(r_h)
+        c_l, s_l = merge_sort_helper(l_h)
+        c_r, s_r = merge_sort_helper(r_h)
 
-        merge(ints, l_h, r_h)
+        c, s = merge(ints, l_h, r_h)
+
+        return (c + c_l + c_r, s + s_l + s_r)
+    else:
+        return (0, 0)
+
+
+def merge_sort(ints):
+    merge_sort_helper(ints)
 
 
 def partition(ints, start, end):

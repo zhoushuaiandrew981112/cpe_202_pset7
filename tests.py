@@ -171,6 +171,70 @@ class Test_Pset7(unittest.TestCase):
         act_tup = quick_sort(act_lst)
         self.assertEqual(act_lst, exp_lst)
 
+    def test_merge_sort(self):
+
+        act_lst = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+        exp_lst = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+        c_s = merge(act_lst, [], [])
+        self.assertEqual(c_s, (0, 0)) 
+        c_s = merge_l_r(act_lst, [], [], 0, 0, 0, 0, 0)
+        self.assertEqual(c_s, (0, 0)) 
+        c_s = merge_sort_helper(act_lst)
+        self.assertEqual(c_s, (34, 34)) 
+        act_tup = merge_sort(act_lst)
+        self.assertEqual(act_lst, exp_lst)
+
+        act_lst = [1, 0, 2]
+        exp_lst = [0, 1, 2]
+        c_s = merge(act_lst, [], [])
+        self.assertEqual(c_s, (0, 0)) 
+        c_s = merge_l_r(act_lst, [], [], 0, 0, 0, 0, 0)
+        self.assertEqual(c_s, (0, 0)) 
+        c_s = merge_sort_helper(act_lst)
+        c_s = merge_sort_helper(act_lst)
+        self.assertEqual(c_s, (5, 5)) 
+        act_tup = merge_sort(act_lst)
+        self.assertEqual(act_lst, exp_lst)
+        
+        act_lst = [1, 2, 3, 0]
+        exp_lst = [0, 1, 2, 3]
+        c_s = merge(act_lst, [], [])
+        self.assertEqual(c_s, (0, 0)) 
+        c_s = merge_l_r(act_lst, [], [], 0, 0, 0, 0, 0)
+        self.assertEqual(c_s, (0, 0)) 
+        c_s = merge_sort_helper(act_lst)
+        c_s = merge_sort_helper(act_lst)
+        self.assertEqual(c_s, (8, 8)) 
+        act_tup = merge_sort(act_lst)
+        self.assertEqual(act_lst, exp_lst)
+
+        act_lst = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+        exp_lst = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+        c_s = merge(act_lst, [], [])
+        self.assertEqual(c_s, (0, 0)) 
+        c_s = merge_l_r(act_lst, [], [], 0, 0, 0, 0, 0)
+        self.assertEqual(c_s, (0, 0)) 
+        c_s = merge_sort_helper(act_lst)
+        c_s = merge_sort_helper(act_lst)
+        self.assertEqual(c_s, (34, 34)) 
+        act_tup = merge_sort(act_lst)
+        self.assertEqual(act_lst, exp_lst)
+
+        act_lst = [3, 2, 1, 0]
+        exp_lst = [0, 1, 2, 3]
+        c_s = merge(act_lst, [], [])
+        self.assertEqual(c_s, (0, 0)) 
+        c_s = merge_l_r(act_lst, [], [], 0, 0, 0, 0, 0)
+        self.assertEqual(c_s, (0, 0)) 
+        c_s = merge_sort_helper(act_lst)
+        c_s = merge_sort_helper(act_lst)
+        self.assertEqual(c_s, (8, 8)) 
+        act_tup = merge_sort(act_lst)
+        self.assertEqual(act_lst, exp_lst)
+
+
+
+
 
 if __name__ == "__main__":
     unittest.main() 
